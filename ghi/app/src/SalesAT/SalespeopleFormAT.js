@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SalespeopleForm() {
+export default function SalespeopleForm({centerForm}) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [employeeId, setEmployeeId] = useState("");
@@ -40,25 +40,27 @@ export default function SalespeopleForm() {
     }
 
     return (
-        <div className="row">
-            <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
-                    <h1>Add a Salesperson</h1>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-floating mb-3">
-                            <input onChange={(e) => handleUpdate(e, setFirstName)} value={firstName} placeholder="First Name" required type="text" name="firstName" id="firstName" className="form-control" />
-                            <label htmlFor="firstName">First Name</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={(e) => handleUpdate(e, setLastName)} value={lastName} placeholder="Last Name" required type="text" name="lastName" id="lastName" className="form-control" />
-                            <label htmlFor="lastName">Last Name</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={(e) => handleUpdate(e, setEmployeeId)} value={employeeId} placeholder="Employee ID" required type="text" name="employeeId" id="employeeId" className="form-control" />
-                            <label htmlFor="employeeId">Employee ID</label>
-                        </div>
-                        <button className="btn btn-primary">Create</button>
-                    </form>
+        <div style={centerForm}>
+            <div className="row w-100">
+                <div className="offset-3 col-6">
+                    <div className="shadow p-4 mt-4">
+                        <h1>Add a Salesperson</h1>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-floating mb-3">
+                                <input onChange={(e) => handleUpdate(e, setFirstName)} value={firstName} placeholder="First Name" required type="text" name="firstName" id="firstName" className="form-control" />
+                                <label htmlFor="firstName">First Name</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input onChange={(e) => handleUpdate(e, setLastName)} value={lastName} placeholder="Last Name" required type="text" name="lastName" id="lastName" className="form-control" />
+                                <label htmlFor="lastName">Last Name</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input onChange={(e) => handleUpdate(e, setEmployeeId)} value={employeeId} placeholder="Employee ID" required type="text" name="employeeId" id="employeeId" className="form-control" />
+                                <label htmlFor="employeeId">Employee ID</label>
+                            </div>
+                            <button className="btn btn-primary">Create</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@ export default function SalespersonHistory() {
     }, []);
 
     return (
-        <div className="my-5 container">
+        <div className="my-5 container h-100">
             <h1>Salesperson History</h1>
             <div className="mb-3">
                 <select onChange={(e) => handleUpdate(e, setSalesperson)} value={salesperson} name="salesperson" id="salesperson" className="form-select">
@@ -53,34 +53,36 @@ export default function SalespersonHistory() {
                     })}
                 </select>
             </div>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Salesperson Employee ID</th>
-                        <th>Salesperson Name</th>
-                        <th>Customer</th>
-                        <th>VIN</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sales.filter(sale => {
-                        return (
-                            salesperson == "" ? sale : sale.salesperson.id == salesperson
-                        )
-                    }).map(sale => {
-                        return (
-                            <tr key={sale.id}>
-                                <td> {sale.salesperson.employee_id} </td>
-                                <td> {sale.salesperson.first_name + " " + sale.salesperson.last_name} </td>
-                                <td> {sale.customer.first_name + " " + sale.customer.last_name} </td>
-                                <td> {sale.automobile.vin} </td>
-                                <td> {sale.price} </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <div className="h-75 overflow-auto">
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Salesperson Employee ID</th>
+                            <th>Salesperson Name</th>
+                            <th>Customer</th>
+                            <th>VIN</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {sales.filter(sale => {
+                            return (
+                                salesperson == "" ? sale : sale.salesperson.id == salesperson
+                            )
+                        }).map(sale => {
+                            return (
+                                <tr key={sale.id}>
+                                    <td> {sale.salesperson.employee_id} </td>
+                                    <td> {sale.salesperson.first_name + " " + sale.salesperson.last_name} </td>
+                                    <td> {sale.customer.first_name + " " + sale.customer.last_name} </td>
+                                    <td> {sale.automobile.vin} </td>
+                                    <td> {sale.price} </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

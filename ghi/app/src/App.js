@@ -21,42 +21,49 @@ import SalesForm from "./SalesAT/SalesFormAT";
 import SalespersonHistory from "./SalesAT/SalespersonHistoryAT";
 
 function App() {
+  const centerForm = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "80vh",
+  }
+
   return (
     <BrowserRouter>
-      <Nav />
-      <div className="container">
+      <div className="vh-100 overflow-hidden">
+        <Nav />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="automobiles/" element={<ListAutomobiles />} />
-          <Route path="automobiles/create/" element={<NewAutomobileForm />} />
+          <Route path="automobiles/create/" element={<NewAutomobileForm centerForm={centerForm} />} />
           <Route path="models">
             <Route path="" element={<ListVehicleModels />} />
-            <Route path="create" element={<VehicleModelForm />} />
+            <Route path="create" element={<VehicleModelForm centerForm={centerForm}/>} />
           </Route>
           <Route path="technicians">
             <Route path="" element={<ListTechnicians />} />
-            <Route path="create" element={<TechnicianForm />} />
+            <Route path="create" element={<TechnicianForm centerForm={centerForm} />} />
           </Route>
           <Route path="appointments">
             <Route path="" element={<ListAppointments />} />
-            <Route path="create" element={<AppointmentForm />} />
+            <Route path="create" element={<AppointmentForm centerForm={centerForm} />} />
             <Route path="history" element={<AppointmentHistory />} />
           </Route>
           <Route path="manufacturers">
             <Route path="" element={<ManufacturersList />} />
-            <Route path="create" element={<ManufacturersForm />} />
+            <Route path="create" element={<ManufacturersForm centerForm={centerForm} />} />
           </Route>
           <Route path="salespeople">
             <Route path="" element={<SalespeopleList />} />
-            <Route path="create" element={<SalespeopleForm />} />
+            <Route path="create" element={<SalespeopleForm centerForm={centerForm} />} />
           </Route>
           <Route path="customers">
             <Route path="" element={<CustomersList />} />
-            <Route path="create" element={<CustomersForm/>} />
+            <Route path="create" element={<CustomersForm centerForm={centerForm} />} />
           </Route>
           <Route path="sales">
             <Route path="" element={<SalesList />} />
-            <Route path="create" element={<SalesForm />} />
+            <Route path="create" element={<SalesForm centerForm={centerForm} />} />
             <Route path="history" element={<SalespersonHistory />}/>
           </Route>
         </Routes>

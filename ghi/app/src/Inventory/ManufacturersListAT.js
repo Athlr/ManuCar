@@ -19,24 +19,26 @@ export default function ManufacturersList() {
     }, []);
 
     return (
-        <div className="my-5 container">
+        <div className="my-5 container h-100">
             <h1>Manufacturers</h1>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {manufacturers.map(manufacturer => {
-                        return(
-                            <tr key={manufacturer.name}>
-                                <td> {manufacturer.name} </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <div className="h-75 overflow-auto">
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {manufacturers.map(manufacturer => {
+                            return(
+                                <tr key={manufacturer.name}>
+                                    <td> {manufacturer.name} </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

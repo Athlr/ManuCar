@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function NewAutomobileForm() {
+export default function NewAutomobileForm({centerForm}) {
   const [models, setModels] = useState([]);
   const [color, setColor] = useState("");
   const [year, setYear] = useState("");
@@ -57,8 +57,8 @@ export default function NewAutomobileForm() {
   }, []);
 
   return (
-    <div className="my-5 container">
-      <div className="row">
+    <div style={centerForm}>
+      <div className="row w-100">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Add a new automobile to inventory</h1>
@@ -121,7 +121,7 @@ export default function NewAutomobileForm() {
                   })}
                 </select>
               </div>
-              <button className="btn btn-success">Create</button>
+              <button className="btn btn-primary">Create</button>
             </form>
           </div>
         </div>

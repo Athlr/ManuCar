@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SalesForm() {
+export default function SalesForm({centerForm}) {
     const [autos, setAutos] = useState([]);
     const [salespeople, setSalespeople] = useState([]);
     const [customers, setCustomers] = useState([]);
@@ -86,56 +86,58 @@ export default function SalesForm() {
     }, []);
 
     return (
-        <div className="row">
-            <div className="offset-3 col-6">
-                <div className="shadow p-4 mt-4">
-                    <h1>Record a New Sale</h1>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-floating mb-3">
-                            <select onChange={(e) => handleUpdate(e, setHref)} value={href} placeholder="Choose a VIN" required name="href" id="href" className="form-select">
-                                <option value="">--</option>
-                                {autos.filter(auto => auto.sold === false).map(auto => {
-                                    return(
-                                        <option value={auto.import_href} key={auto.import_href}>
-                                            {auto.vin}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                            <label htmlFor="href">Choose a VIN</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <select onChange={(e) => handleUpdate(e, setSalesperson)} value={salesperson} placeholder="Choose a Salesperson" required name="salesperson" id="salesperson" className="form-select">
-                                <option value="">--</option>
-                                {salespeople.map(salesperson => {
-                                    return(
-                                        <option value={salesperson.id} key={salesperson.id}>
-                                            {salesperson.first_name + " " + salesperson.last_name}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                            <label htmlFor="salesperson">Choose a Salesperson</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <select onChange={(e) => handleUpdate(e, setCustomer)} value={customer} placeholder="Choose a Customer" required name="customer" id="customer" className="form-select">
-                                <option value="">--</option>
-                                {customers.map(customer => {
-                                    return(
-                                        <option value={customer.id} key={customer.id}>
-                                            {customer.first_name + " " + customer.last_name}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-                            <label htmlFor="customer">Choose a Customer</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={(e) => handleUpdate(e, setPrice)} value={price} placeholder="Price" required type="text" name="price" id="price" className="form-control"/>
-                            <label htmlFor="price">Price</label>
-                        </div>
-                        <button className="btn btn-primary">Create</button>
-                    </form>
+        <div style={centerForm}>
+            <div className="row w-100">
+                <div className="offset-3 col-6">
+                    <div className="shadow p-4 mt-4">
+                        <h1>Record a New Sale</h1>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-floating mb-3">
+                                <select onChange={(e) => handleUpdate(e, setHref)} value={href} placeholder="Choose a VIN" required name="href" id="href" className="form-select">
+                                    <option value="">--</option>
+                                    {autos.filter(auto => auto.sold === false).map(auto => {
+                                        return(
+                                            <option value={auto.import_href} key={auto.import_href}>
+                                                {auto.vin}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                                <label htmlFor="href">Choose a VIN</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <select onChange={(e) => handleUpdate(e, setSalesperson)} value={salesperson} placeholder="Choose a Salesperson" required name="salesperson" id="salesperson" className="form-select">
+                                    <option value="">--</option>
+                                    {salespeople.map(salesperson => {
+                                        return(
+                                            <option value={salesperson.id} key={salesperson.id}>
+                                                {salesperson.first_name + " " + salesperson.last_name}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                                <label htmlFor="salesperson">Choose a Salesperson</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <select onChange={(e) => handleUpdate(e, setCustomer)} value={customer} placeholder="Choose a Customer" required name="customer" id="customer" className="form-select">
+                                    <option value="">--</option>
+                                    {customers.map(customer => {
+                                        return(
+                                            <option value={customer.id} key={customer.id}>
+                                                {customer.first_name + " " + customer.last_name}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                                <label htmlFor="customer">Choose a Customer</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input onChange={(e) => handleUpdate(e, setPrice)} value={price} placeholder="Price" required type="text" name="price" id="price" className="form-control"/>
+                                <label htmlFor="price">Price</label>
+                            </div>
+                            <button className="btn btn-primary">Create</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

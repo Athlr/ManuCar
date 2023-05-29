@@ -16,7 +16,7 @@ Team:
 **Setting up Docker:** \
 In your command line run the following snippets of code:
 1. Create the Docker Volume required for Project Beta:
-`docker volume create beta-data`
+`docker volume create manucar-data`
 2. Build docker images:
 `docker-compose build`
 3. Starts and runs docker containers:
